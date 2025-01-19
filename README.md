@@ -74,7 +74,7 @@ Follow these steps to set up the project on your local machine:
 ## Technologies Used
 
 - **Frontend**: React, Tailwind CSS, Vite
-- **Storage**: Local Storage
+- **Storage**: MongoDB
 
 ## Contribution
 
