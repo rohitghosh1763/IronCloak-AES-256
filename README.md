@@ -17,6 +17,8 @@ Follow these steps to set up the project on your local machine:
 
 - [Node.js](https://nodejs.org/) (version 14 or higher)
 - [npm](https://www.npmjs.com/) (comes with Node.js) or [Yarn](https://yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/) (for storing passwords securely)
+- [Express](https://expressjs.com/) (for handling server-side requests)
 
 ### Steps
 
