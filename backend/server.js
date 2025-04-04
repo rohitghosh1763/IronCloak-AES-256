@@ -16,7 +16,7 @@ app.use(
         methods: ["GET", "POST", "PUT", "DELETE"],
     })
 );
-// Database connection
+
 let db;
 (async () => {
     try {
@@ -25,7 +25,7 @@ let db;
         db = client.db(dbName);
         console.log("Connected to MongoDB");
 
-        // Create indexes
+        // Creating indexes
         await db.collection("passwords").createIndex({ userId: 1 });
     } catch (error) {
         console.error("Database connection error:", error);
@@ -33,15 +33,15 @@ let db;
     }
 })();
 
-// Routes
+
 app.post("/api/passwords", async (req, res) => {
     try {
         const { encryptedData, key } = req.body;
 
-        // Decrypt to validate structure
+        // Decrypting to validate structure
         const decrypted = JSON.parse(decryptWithKey(encryptedData, key));
 
-        // Re-encrypt password for storage
+        // Re-encrypting password for storage
         const encryptedPassword = encryptWithKey(decrypted.password, key);
 
         const result = await db.collection("passwords").insertOne({
@@ -68,7 +68,7 @@ app.get("/api/passwords", async (req, res) => {
             .find(userId ? { userId } : {})
             .toArray();
 
-        // Decrypt each password individually with error handling
+        // Decrypting each password individually with error handling
         const decryptedPasswords = passwords.map((item) => {
             try {
                 return {
@@ -78,7 +78,7 @@ app.get("/api/passwords", async (req, res) => {
                     password: decryptWithKey(item.password, key),
                 };
             } catch (decryptError) {
-                // Return the item with a placeholder for failed decryption
+                
                 console.error(
                     `Failed to decrypt password for ${item.site}:`,
                     decryptError
