@@ -4,12 +4,14 @@ import Manager from "./Components/Manager.jsx";
 import Footer from "./Components/Footer.jsx";
 const App = () => {
     return (
-        <>
-            <Navbar />
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow"> {/* This makes Manager content take available space */}
             <Manager />
-            <Footer />
-        </>
-    );
+          </main>
+          <Footer />
+        </div>
+      );
 };
 
 export default App;

@@ -4,8 +4,8 @@ const { MongoClient, ObjectId } = require("mongodb");
 const { encryptWithKey, decryptWithKey } = require("./encryption");
 const cors = require("cors");
 const app = express();
-const port = process.env.PORT || 3000;
-const mongoUrl = process.env.MONGODB_URI || "mongodb://localhost:27017";
+const port = process.env.PORT;
+const mongoUrl = process.env.MONGODB_URI;
 const dbName = "ironcloak";
 
 // Middleware
@@ -32,7 +32,6 @@ let db;
         process.exit(1);
     }
 })();
-
 
 app.post("/api/passwords", async (req, res) => {
     try {
@@ -78,7 +77,6 @@ app.get("/api/passwords", async (req, res) => {
                     password: decryptWithKey(item.password, key),
                 };
             } catch (decryptError) {
-                
                 console.error(
                     `Failed to decrypt password for ${item.site}:`,
                     decryptError
