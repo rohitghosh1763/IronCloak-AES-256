@@ -12,7 +12,7 @@ const dbName = "ironcloak";
 app.use(express.json());
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: "*",
         methods: ["GET", "POST", "PUT", "DELETE"],
     })
 );
