@@ -134,7 +134,7 @@ const Manager = () => {
         try {
             // Ensure this URL is correct and your backend is running
             const res = await fetch(
-                `http://localhost:3000/api/passwords?key=${encodeURIComponent(key)}`
+                `https://ironcloak-aes-256.onrender.com/api/passwords?key=${encodeURIComponent(key)}`
             );
             if (!res.ok) {
                 throw new Error('Failed to fetch passwords. Status: ' + res.status);
@@ -165,8 +165,8 @@ const Manager = () => {
             const method = form._id ? "PUT" : "POST";
             // Ensure these URLs are correct for your API
             const url = form._id
-                ? `http://localhost:3000/api/passwords/${form._id}`
-                : "http://localhost:3000/api/passwords";
+                ? `https://ironcloak-aes-256.onrender.com/api/passwords/${form._id}`
+                : "https://ironcloak-aes-256.onrender.com/api/passwords";
             const res = await fetch(url, {
                 method,
                 headers: { "Content-Type": "application/json" },
@@ -194,7 +194,7 @@ const Manager = () => {
         if (window.confirm("Are you sure you want to delete this password permanently?")) {
             try {
                  // Ensure this URL is correct for your API
-                await fetch(`http://localhost:3000/api/passwords/${id}`, {
+                await fetch(`https://ironcloak-aes-256.onrender.com/api/passwords/${id}`, {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" }, // Optional: some APIs might need this for DELETE
                     body: JSON.stringify({ key: clientKey }) // Send clientKey if your API requires it for auth on DELETE
